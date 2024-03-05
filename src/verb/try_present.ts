@@ -1,4 +1,4 @@
-import porter = require("en-stemmer");
+import * as porter from "en-stemmer";
 
 import * as list from "./solve_lookup";
 

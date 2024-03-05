@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "ESNext",
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
         "outDir": "./dist/",
-        "declaration":true
+        "declaration":true,
+		"moduleResolution": "Bundler",
     },
     "files": [
         "./src/index.ts"

@@ -1,3 +1,48 @@
+
+# English Inflectors
+
+This library is a fork and copy of the [`en-infliector`](https://github.com/FinNLP/en-inflectors) by [alexcorvi](https://github.com/alexcorvi) with very minor changes to its API.
+
+## Change log from original
+
+* API extented to expose `noun`, `adjective` and `verb` object to directly access related methods insted of contructing an object for every word you need to transform.
+
+So insted of
+```
+import { Inflectors } from "en-inflectors";
+const instance = new Inflectors("bus");
+
+instance.isCountable(); // true
+instance.isSingular(); // true
+instance.toSingular(); // bus (no change)
+instance.toPlural(); // buses
+```
+
+yout can use
+```
+import { noun, adjective, verb } from "en-inflectors";
+const word = 'bus';
+noun.isCountable();
+noun.isCountable(); // true
+noun.isSingular(); // true
+noun.toSingular(); // bus (no change)
+noun.toPlural(); // buses
+```
+
+Note that original way of doing things is still possible since `Inflectors` object is exported as well.
+
+
+## TODO   ✅ ⬜
+⬜ thow vite at it to minimize the output
+
+
+--------
+--------
+--------
+--------
+*the rest of the document is a copy of the original*
+
+ 
 # English Inflectors Library
 For noun (plural to singular and singular to plural), verb (gerund, present & past) and adjective (comparative, superlative) transformations.
 

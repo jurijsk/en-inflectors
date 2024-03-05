@@ -1,4 +1,4 @@
-import * as adjective from "./adjective/transform";
+import * as adjectiveAsIs from "./adjective/transform";
 import * as verb from "./verb/transform";
 import * as nounTransform from "./noun/transform";
 import * as nounDetection from "./noun/detect_singular_plural";
@@ -14,8 +14,8 @@ export class Inflectors {
 		this.word = (word||"").toLowerCase();
 	}
 
-	public comparative = ():string => adjective.comparative(this.word);
-	public superlative = ():string => adjective.superlative(this.word);
+	public comparative = ():string => adjectiveAsIs.comparative(this.word);
+	public superlative = ():string => adjectiveAsIs.superlative(this.word);
 
 	public conjugate = (to:string):string => verb.conjugate(this.word,to);
 	public toPresent = ():string => verb.toPresent(this.word);
@@ -34,7 +34,7 @@ export class Inflectors {
 
 const infinitives = verbsList.VBP;
 
-export const noun = { 
+const noun = { 
 	isSingular: nounDetection.isSingular, 
 	isPlural: nounDetection.isPlural, isCountable: 
 	countableDetection.isCountable, 
@@ -42,5 +42,15 @@ export const noun = {
 	toPlural: nounTransform.toPlural, toSingular: 
 	nounTransform.toSingular 
 };
-export {Inflectors as Inflector, infinitives, nonCountables, adjective, verb};
+
+const adjective = { 
+	toComparative: adjectiveAsIs.comparative, 
+	toSuperlative: adjectiveAsIs.superlative,
+	/** @deprecated */
+	comparative: adjectiveAsIs.comparative, 
+	/** @deprecated */
+	superlative: adjectiveAsIs.superlative,
+
+};
+export {Inflectors as Inflector, infinitives, nonCountables, noun, adjective, verb};
 
